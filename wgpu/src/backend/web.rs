@@ -1272,7 +1272,7 @@ impl crate::Context for Context {
                 );
                 let spv_module_info = validator.validate(&spv_module).unwrap();
 
-                let wgsl_text = back::wgsl::write_string(&spv_module, &spv_module_info).unwrap();
+                let wgsl_text = back::wgsl::write_string(&spv_module, &spv_module_info, back::wgsl::WriterFlags::EXPLICIT_TYPES).unwrap();
                 web_sys::GpuShaderModuleDescriptor::new(wgsl_text.as_str())
             }
             #[cfg(feature = "glsl")]
